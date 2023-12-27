@@ -317,5 +317,4 @@
  .pio/libdeps/esp32-s3-devkitc-1/FastLED/src/power_mgt.h \
  .pio/libdeps/esp32-s3-devkitc-1/FastLED/src/fastspi.h \
  .pio/libdeps/esp32-s3-devkitc-1/FastLED/src/fastspi_bitbang.h \
- .pio/libdeps/esp32-s3-devkitc-1/FastLED/src/chipsets.h \
- C:/Users/haruto/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h
+ .pio/libdeps/esp32-s3-devkitc-1/FastLED/src/chipsets.h
