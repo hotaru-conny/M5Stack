@@ -8,6 +8,9 @@ int flexPin = 2;
 const double PWM_Hz = 50;   //PWM周波数
 const uint8_t PWM_level = 16; //PWM 16bit(0～65535)
 
+int flexMax = 0;
+int flexMin = 4095;
+
 void setup() {
   //M5Stackの初期化
   auto cfg = M5.config();
@@ -33,11 +36,18 @@ void loop() {
   //flexセンサの値を取得
   int flexValue = analogRead(flexPin);
   M5.Display.setCursor(0, 0);
-  M5.Display.printf("flexValue: %d\n", flexValue);
+  M5.Display.printf("flexValue: %4d\n", flexValue);
+
+  if(flexValue > flexMax){
+    flexMax = flexValue;
+  }
+  if(flexValue < flexMin){
+    flexMin = flexValue;
+  }
 
   //サーボの角度を変更
   //サンプルプログラムで2300-9000の範囲を使用していたので、その範囲にマッピング
-  int servoValue = map(flexValue, 2600, 3300, 2300, 9000);
+  int servoValue = map(flexValue, flexMin, flexMax, 2300, 9000);
   ledcWrite(1, servoValue);
   //サーボ
   // for (int i = 2300; i <= 9000; i=i+100) {
